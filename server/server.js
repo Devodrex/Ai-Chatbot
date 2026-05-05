@@ -1,5 +1,5 @@
 import dotenv from "dotenv";
-dotenv.config(); // MUST be first
+dotenv.config();
 
 import express from "express";
 import cors from "cors";
@@ -8,7 +8,11 @@ import chatRoutes from "./routes/chat.js";
 
 const app = express();
 
-app.use(cors());
+// 🔥 CORS (important for Vercel)
+app.use(cors({
+  origin: "*"
+}));
+
 app.use(express.json());
 
 // DB
@@ -17,7 +21,7 @@ connectDB();
 // Routes
 app.use("/", chatRoutes);
 
-// Health
+// Health check
 app.get("/", (req, res) => {
   res.send("API running 🚀");
 });

@@ -4,7 +4,7 @@ import OpenAI from "openai";
 
 const router = express.Router();
 
-// 🔥 Lazy init (fix env issue)
+// 🔥 Lazy init (fix env timing issue)
 function getClient() {
   return new OpenAI({
     apiKey: process.env.OPENAI_API_KEY,
@@ -39,7 +39,7 @@ router.get("/sessions", async (req, res) => {
 
 
 // ===============================
-// GET SESSION
+// GET SINGLE SESSION
 // ===============================
 router.get("/sessions/:id", async (req, res) => {
   const session = await Session.findById(req.params.id);
@@ -77,12 +77,13 @@ router.post("/chat-stream", async (req, res) => {
     const client = getClient();
 
     const completion = await client.chat.completions.create({
-  model: "llama-3.1-8b-instant",
-  messages: session.messages.map((m) => ({
-    role: m.role,
-    content: m.content,
-  })),
-});
+      model: "llama-3.1-8b-instant", // ✅ current working model
+      messages: session.messages.map((m) => ({
+        role: m.role,
+        content: m.content,
+      })),
+    });
+
     const reply = completion.choices[0].message.content;
 
     // Save AI reply
@@ -125,6 +126,5 @@ router.delete("/sessions/:id", async (req, res) => {
   await Session.findByIdAndDelete(req.params.id);
   res.json({ success: true });
 });
-
 
 export default router;
