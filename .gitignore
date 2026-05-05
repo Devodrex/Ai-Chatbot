@@ -1,2 +1,4 @@
 .env
+client/.env
+client-new/.env
 node_modules
