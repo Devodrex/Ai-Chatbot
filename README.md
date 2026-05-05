@@ -330,7 +330,7 @@ npm run dev
 # 📬 Contact
 
 * GitHub: https://github.com/your-Devodrex
-* LinkedIn: (add your profile)
+* LinkedIn: www.linkedin.com/in/addy60456
 
 ---
 
