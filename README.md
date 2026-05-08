@@ -9,7 +9,7 @@ Built with a modern architecture using React (Vite), Node.js, MongoDB, and Groq-
 # 🌐 Live Application
 
 * 🔗 Frontend (Vercel): https://ai-chatbot-three-brown-15.vercel.app
-* 🔗 Backend (Render): https://ai-chatbot-u1zo.onrender.com
+* 🔗 Backend (Render): https://ai-chatbot-u1zo.ounrender45.com
 
 ---
 
